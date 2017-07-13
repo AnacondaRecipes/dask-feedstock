@@ -4,12 +4,13 @@ package:
   name: dask
   version: "{{ version }}"
 
+# this is a metapackage.  No source required
+
 build:
   number: 0
-  noarch: python
 
 requirements:
-  build:
+  host:
     - python
 
   run:
@@ -41,7 +42,10 @@ about:
   home: http://github.com/dask/dask/
   license: BSD 3-Clause
   summary: 'Parallel Python with task scheduling'
+  description: |
+    Dask is a flexible parallel computing library for analytic computing.
   doc_url: https://dask.pydata.org/
+  doc_source_url: https://github.com/dask/dask/blob/master/docs/source/index.rst
   dev_url: https://github.com/dask/dask
 
 extra:
@@ -51,6 +55,7 @@ extra:
     - jcrist
     - koverholt
     - martindurant
+    - mingwandroid
     - mrocklin
     - pitrou
     - tomaugspurger
