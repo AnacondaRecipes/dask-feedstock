@@ -17,6 +17,7 @@ requirements:
   host:
     - python >=3.7
 
+
   run:
     - python >=3.7
     - bokeh >=1.0.0,!=2.0.0
@@ -25,6 +26,10 @@ requirements:
     - distributed >={{ version }}
     - numpy >=1.16
     - pandas >=0.25.0
+    - cloudpickle >=1.1.1
+    - partd >=0.3.10
+    - fsspec >=0.6.0
+    - toolz >=0.8.2
 
   run_constrained:
     - openssl !=1.1.1e
@@ -41,10 +46,15 @@ test:
     - dask.diagnostics
     - dask.distributed
     - distributed
+  requires:
+    - pip
+  commands:
+    pip check
 
 about:
   home: https://dask.org/
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE.txt
   summary: Parallel PyData with Task Scheduling
   description: |
