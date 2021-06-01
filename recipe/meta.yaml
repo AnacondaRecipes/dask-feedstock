@@ -22,7 +22,6 @@ requirements:
     - bokeh >=1.0.0,!=2.0.0
     - cytoolz >=0.8.2
     - dask-core {{ version }}
-    - distributed >={{ version }}
     - numpy >=1.16
     - pandas >=0.25.0
 
@@ -39,8 +38,6 @@ test:
     - dask.dataframe.tseries
     - dask.delayed
     - dask.diagnostics
-    - dask.distributed
-    - distributed
 
 about:
   home: https://dask.org/
