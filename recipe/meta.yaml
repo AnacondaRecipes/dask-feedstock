@@ -48,6 +48,7 @@ test:
     #- distributed
   requires:
     - pip
+    - importlib-metadata
   commands:
     pip check
 
