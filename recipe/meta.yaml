@@ -1,6 +1,5 @@
 {% set version = "2021.6.2" %}
 
-
 package:
   name: dask
   version: {{ version }}
