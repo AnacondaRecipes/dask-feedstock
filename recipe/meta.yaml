@@ -36,6 +36,7 @@ test:
     - dask.bag
     - dask.bytes
     - dask.dataframe
+    - dask.dataframe.io
     - dask.dataframe.tseries
     - dask.delayed
     - dask.diagnostics
