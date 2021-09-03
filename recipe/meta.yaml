@@ -25,6 +25,7 @@ requirements:
     - distributed {{ version }}
     - numpy >=1.18
     - pandas >=1.0
+    - jinja2
 
   run_constrained:
     - openssl !=1.1.1e
@@ -42,6 +43,10 @@ test:
     - dask.diagnostics
     - dask.distributed
     - distributed
+  requires:
+    - pip
+  commands:
+    - pip check
 
 #Note: The build and dependency order for dask-distributed packages are as follows.
 #      dask-core --->distributed --->dask
