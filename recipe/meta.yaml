@@ -1,32 +1,29 @@
+{% set name = "dask" %}
 {% set version = "2022.2.1" %}
 
 package:
-  name: dask
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: dask-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/d/dask/dask-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: b699da18d147da84c6c0be26d724dc1ec384960bf1f23c8db4f90740c9ac0a89
-
 build:
   number: 0
   noarch: python
 
 requirements:
   host:
-    - python >=3.7
-
+    - python
   run:
-    - python >=3.7
-    - bokeh >=1.0.0,!=2.0.0
+    - python >=3.8
+    - bokeh >=2.1.1
     - cytoolz >=0.8.2
     - dask-core {{ version }}
     - distributed {{ version }}
+    - jinja2
     - numpy >=1.18
     - pandas >=1.0
-    - jinja2
-
   run_constrained:
     - openssl !=1.1.1e
 
