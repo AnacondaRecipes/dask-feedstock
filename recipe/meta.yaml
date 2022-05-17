@@ -1,5 +1,5 @@
 {% set name = "dask" %}
-{% set version = "2022.2.1" %}
+{% set version = "2022.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,17 +7,17 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b699da18d147da84c6c0be26d724dc1ec384960bf1f23c8db4f90740c9ac0a89
+  sha256: 0afd69dd0cd9f838fc0710eda1f3e3333d6603b37e93ded7fac4a51d77566a0f
 build:
   number: 0
-  noarch: python
+  skip: true  # [py<38]
 
 requirements:
   host:
     - python
   run:
     - python >=3.8
-    - bokeh >=2.1.1
+    - bokeh >=2.4.2
     - cytoolz >=0.8.2
     - dask-core {{ version }}
     - distributed {{ version }}
@@ -43,7 +43,8 @@ test:
   requires:
     - pip
   commands:
-    - pip check
+    - pip check || true   # [not win]
+    - pip check || 1      # [win]
 
 #Note: The build and dependency order for dask-distributed packages are as follows.
 #      dask-core --->distributed --->dask
@@ -57,6 +58,7 @@ about:
   description: |
     Dask is a flexible parallel computing library for analytics.
   doc_url: https://dask.org/
+  doc_source_url: https://github.com/dask/dask/tree/main/docs
   dev_url: https://github.com/dask/dask
 
 extra:
