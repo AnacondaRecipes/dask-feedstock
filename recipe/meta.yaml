@@ -22,6 +22,7 @@ requirements:
     - dask-core {{ version }}
     - distributed {{ version }}
     - jinja2
+    - lz4
     - numpy >=1.18
     - pandas >=1.0
   run_constrained:
