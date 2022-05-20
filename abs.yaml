@@ -1,2 +1,7 @@
 channels: 
   cbouss: dask_dev 
+
+build_parameters:
+  - "--suppress-variables"
+  - "--error-overlinking"
+  - "--error-overdepending"
