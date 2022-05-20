@@ -15,7 +15,7 @@ requirements:
   host:
     - python
   run:
-    - python >=3.8
+    - python
     - bokeh >=2.4.2,<3.0
     - cytoolz >=0.8.2
     - dask-core {{ version }}
