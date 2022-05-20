@@ -10,14 +10,14 @@ source:
   sha256: 0afd69dd0cd9f838fc0710eda1f3e3333d6603b37e93ded7fac4a51d77566a0f
 build:
   number: 0
-  skip: true  # [py<38]
+  skip: true
 
 requirements:
   host:
     - python
   run:
     - python >=3.8
-    - bokeh >=2.4.2
+    - bokeh >=2.4.2,<3.0
     - cytoolz >=0.8.2
     - dask-core {{ version }}
     - distributed {{ version }}
@@ -44,8 +44,7 @@ test:
   requires:
     - pip
   commands:
-    - pip check || true   # [not win]
-    - pip check || 1      # [win]
+    - pip check
 
 #Note: The build and dependency order for dask-distributed packages are as follows.
 #      dask-core --->distributed --->dask
