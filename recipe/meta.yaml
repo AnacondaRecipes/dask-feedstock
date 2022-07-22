@@ -1,5 +1,7 @@
 {% set name = "dask" %}
-{% set version = "2022.5.0" %}
+{% set version = "2022.7.0" %}
+{% set build_number = "0" %}
+{% set checksum = "50ad63035d6429cfa71d4c1832888a668e4260b1ef11163c795edc0ed177b4b3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,9 +9,9 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0afd69dd0cd9f838fc0710eda1f3e3333d6603b37e93ded7fac4a51d77566a0f
+  sha256: {{ checksum }}
 build:
-  number: 0
+  number: {{ build_number }}
   skip: true # [py<38]
 
 requirements:
