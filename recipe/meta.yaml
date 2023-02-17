@@ -1,7 +1,7 @@
 {% set name = "dask" %}
-{% set version = "2022.7.0" %}
+{% set version = "2023.2.0" %}
 {% set build_number = "0" %}
-{% set checksum = "50ad63035d6429cfa71d4c1832888a668e4260b1ef11163c795edc0ed177b4b3" %}
+{% set checksum = "c0716193e0e197bc541199e41770b4f2f7df6c137bb94e5b4812cfdc6cbe0a84" %}
 
 package:
   name: {{ name|lower }}
