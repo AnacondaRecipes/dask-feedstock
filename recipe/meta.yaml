@@ -20,7 +20,7 @@ requirements:
     - wheel
   run:
     - python
-    - bokeh >=2.4.2
+    - bokeh >=2.4.2,<3.0
     - click >=8.0
     - cloudpickle >=1.5.1
     - dask-core {{ version }}
