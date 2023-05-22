@@ -35,7 +35,7 @@ requirements:
     - partd >=1.2.0
     - pyyaml >=5.3.1
   run_constrained:
-    - openssl openssl >3.0.0a,<3.1.0a
+    - openssl >3.0.0a,<3.1.0a
 
 test:
   imports:
