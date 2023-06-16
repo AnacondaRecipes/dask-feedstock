@@ -1,5 +1,5 @@
 {% set name = "dask" %}
-{% set version = "2023.5.1" %}
+{% set version = "2023.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d1b988526012ac2896ace302347e23c003504f8baa69d106b75bd442f089495a
+  sha256: 980741966ef4d14c62dfb146f315f57d5eaaa6bedc52866f99687bc6054c2d4b
 build:
   number: 0
   skip: true # [py<39]
@@ -18,9 +18,10 @@ requirements:
     - pip
     - setuptools
     - wheel
+    - versioneer 0.28
   run:
     - python
-    - bokeh >=2.4.2,<3.0
+    - bokeh >=2.4.2
     - cytoolz >=0.12.0
     - dask-core {{ version }}
     - distributed {{ version }}
@@ -28,9 +29,7 @@ requirements:
     - lz4 >=4.3.2
     - numpy >=1.21
     - pandas >=1.3
-    - pyarrow >=7.0                  # [not s390x]
-  run_constrained:
-    - openssl !=1.1.1e
+    - pyarrow >=7.0
 
 test:
   imports:
@@ -44,6 +43,7 @@ test:
     - dask.delayed
     - dask.diagnostics
     - dask.distributed
+    - dask.widgets
     - distributed
   requires:
     - pip
@@ -75,3 +75,5 @@ extra:
     - pitrou
     - tomaugspurger
     - jrbourbeau
+  skip-lints:
+    - python_build_tool_in_run
