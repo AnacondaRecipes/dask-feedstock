@@ -29,7 +29,7 @@ requirements:
     - lz4 >=4.3.2
     - numpy >=1.21
     - pandas >=1.3
-    - pyarrow >=7.0
+    - pyarrow >=7.0  # [not s390x]
 
 test:
   imports:
