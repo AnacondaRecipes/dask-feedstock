@@ -1,5 +1,5 @@
 {% set name = "dask" %}
-{% set version = "2023.11.0" %}
+{% set version = "2024.4.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 06b8f39755d37ff6ef4db422774db1f1d5d6788d33f0628c80861dc6452f878c
+  sha256: 3d7a516468d96e72581b84c7bb00172366f30d24c689ea4e9bd1334ab6d98f8a
 build:
   number: 0
   skip: true # [py<39]
@@ -20,6 +20,7 @@ requirements:
     - bokeh >=2.4.2
     - cytoolz >=0.12.0
     - dask-core {{ version }}
+    - dask-expr >=1.0,<1.1
     - distributed {{ version }}
     - jinja2 >=2.10.3
     - lz4 >=4.3.2
