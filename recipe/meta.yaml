@@ -24,8 +24,8 @@ requirements:
     - python
     - bokeh >=2.4.2
     - cytoolz >=0.12.0
-    - dask-core {{ version }}
-    - distributed {{ version }}
+    - dask-core =={{ version }}
+    - distributed =={{ version }}
     - jinja2 >=2.10.3
     - lz4 >=4.3.2
     - numpy >=1.21
