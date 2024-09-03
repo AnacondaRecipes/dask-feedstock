@@ -53,7 +53,7 @@ test:
     - pip check
 
 #Note: The build and dependency order for dask-distributed packages are as follows.
-#      dask-core --->distributed --->dask
+#      dask-core ---> dask-expr --->distributed --->dask
 
 about:
   home: https://www.dask.org/
