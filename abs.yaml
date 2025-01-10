@@ -7,3 +7,4 @@ channels:
   - https://staging.continuum.io/prefect/fs/toolz-feedstock/pr3/9c8f0c4
   - https://staging.continuum.io/prefect/fs/dask-expr-feedstock/pr3/e0f403f
   - https://staging.continuum.io/prefect/fs/distributed-feedstock/pr34/35cfe8a
+  - https://staging.continuum.io/prefect/fs/cytoolz-feedstock/pr5/cdadb43
