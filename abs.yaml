@@ -3,3 +3,4 @@ build_env_vars:
 
 channels:
   - https://staging.continuum.io/prefect/fs/distributed-feedstock/pr35/b5860aa
+  - https://staging.continuum.io/prefect/fs/dask-expr-feedstock/pr4/79b2896
