@@ -31,7 +31,7 @@ requirements:
     - numpy >=1.24
     - pandas >=2.0
     - pyarrow >=14.0.1
-    - dask-expr >=1.1,<1.2
+    - dask-expr >=2,<3
 
 test:
   imports:
