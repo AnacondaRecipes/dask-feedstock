@@ -1,5 +1,5 @@
 {% set name = "dask" %}
-{% set version = "2024.12.1" %}
+{% set version = "2025.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: bac809af21c2dd7eb06827bccbfc612504f3ee6435580e548af912828f823195
+  sha256: 89c87125d04d28141eaccc4794164ce9098163fd22d8ad943db48f8d4c815460
 build:
   number: 0
   skip: true # [py<310]
@@ -31,7 +31,7 @@ requirements:
     - numpy >=1.24
     - pandas >=2.0
     - pyarrow >=14.0.1
-    - dask-expr >=1.1,<1.2
+    - dask-expr >=2,<3
 
 test:
   imports:
