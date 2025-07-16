@@ -23,9 +23,11 @@ requirements:
     - wheel
     - setuptools >=62.6
     - versioneer 0.29
-    - toml
+    - tomli
   run:
     - python
+    - dask-core =={{ version }}
+    - distributed =={{ version }}
     - click >=8.1
     - cloudpickle >=3.0.0
     - fsspec >=2021.09.0
