@@ -10,7 +10,7 @@ source:
   sha256: 979d9536549de0e463f4cab8a8c66c3a2ef55791cd740d07d9bf58fab1d1076a
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - dask = dask.__main__:main
@@ -36,18 +36,13 @@ requirements:
     - pyyaml >=5.3.1
     - toolz >=0.10.0
     - importlib-metadata >=4.13.0  # [py<312]
-  run_constrained:
-    # array
-    - numpy >=1.24
-    # dataframe
-    - pandas >=2.0
+    # complete
     - pyarrow >=14.0.1
-    # diagnostics
+    - lz4 >=4.3.2
+    - pandas >=2.0
     - bokeh >=3.1.0
     - jinja2 >=2.10.3
-    # complete
-    # - pyarrow >=14.0.1
-    - lz4 >= 4.3.2
+    - numpy >=1.24
 
 {% set deselect_tests = "" %}
 # E   AssertionError: assert {'x': 1, 'y': 3, 'z': 4} == {'y': 3, 'z': 4}
