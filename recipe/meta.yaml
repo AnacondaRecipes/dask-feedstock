@@ -56,7 +56,6 @@ requirements:
 {% set deselect_tests = deselect_tests + " --deselect=test_system.py::test_cpu_count_cgroups" %}  # [linux]
 {% set deselect_tests = deselect_tests + " --deselect=test_system.py::test_cpu_count_cgroups_v2" %}  # [linux]
 
-
 test:
   source_files:
     - conftest.py
