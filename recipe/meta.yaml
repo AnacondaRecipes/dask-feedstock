@@ -1,20 +1,20 @@
 {% set name = "dask" %}
-{% set version = "2025.7.0" %}
+{% set version = "2025.9.1" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c3a0d4e78882e85ea81dbc71e6459713e45676e2d17e776c2f3f19848039e4cf
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 718df73e1fd3d7e2b8546e0f04ce08e1ed7f9aa3da1eecd0c1f44c8b6d52f7e0
 
 build:
   number: 0
+  skip: true  # [py<310]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - dask = dask.__main__:main
-  skip: true  # [py<310]
 
 requirements:
   host:
