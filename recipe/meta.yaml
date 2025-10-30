@@ -12,9 +12,7 @@ source:
 build:
   number: 0
   skip: true  # [py<310]
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  entry_points:
-    - dask = dask.__main__:main
+  # do not call pip install or this will lead to duplicates with files from dask-core
 
 requirements:
   host:
