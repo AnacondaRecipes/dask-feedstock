@@ -1,5 +1,5 @@
 {% set name = "dask" %}
-{% set version = "2025.9.1" %}
+{% set version = "2025.10.0" %}
 
 package:
   name: {{ name }}
@@ -7,14 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 718df73e1fd3d7e2b8546e0f04ce08e1ed7f9aa3da1eecd0c1f44c8b6d52f7e0
+  sha256: fd3159c319c27cea39b891c0f22d60056a33575fb4906618eab0aeeb5dcd0cbc
 
 build:
   number: 0
   skip: true  # [py<310]
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  entry_points:
-    - dask = dask.__main__:main
+  # do not call pip install or this will lead to duplicates with files from dask-core
 
 requirements:
   host:
