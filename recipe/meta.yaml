@@ -1,5 +1,9 @@
 {% set name = "dask" %}
-{% set version = "2025.10.0" %}
+{% set version = "2025.11.0" %}
+{% set deselect_tests = "" %}
+{% set deselect_tests = 'deselect_tests + " --deselect=test_config.py::test_collect_yaml_permission_errors"' %}  # [linux]
+{% set deselect_tests = 'deselect_tests + " --deselect=test_system.py::test_cpu_count_cgroups"' %}  # [linux]
+{% set deselect_tests = 'deselect_tests + " --deselect=test_system.py::test_cpu_count_cgroups_v2"' %}  # [linux]
 
 package:
   name: {{ name }}
@@ -7,7 +11,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: fd3159c319c27cea39b891c0f22d60056a33575fb4906618eab0aeeb5dcd0cbc
+  sha256: 23d59e624b80ee05b7cc8df858682cca58262c4c3b197ccf61da0f6543c8f7c3
 
 build:
   number: 0
@@ -18,10 +22,10 @@ requirements:
   host:
     - python
     - pip
-    - wheel
-    - setuptools >=62.6
+    - setuptools >=80
     - versioneer 0.29
     - tomli
+    - setuptools-scm
   run:
     - python
     - dask-core =={{ version }}
@@ -41,19 +45,22 @@ requirements:
     - bokeh >=3.1.0
     - jinja2 >=2.10.3
     - numpy >=1.24
+  run_constrained:
+    - numpy >=1.24
+    - pyarrow >=14.0.1
+    - lz4 >=4.3.2
+    - pandas >=2.0
+    - bokeh >=3.1.0
+    - jinja2 >=2.10.3
+    - distributed ==2025.11.0
 
-{% set deselect_tests = "" %}
 # E   AssertionError: assert {'x': 1, 'y': 3, 'z': 4} == {'y': 3, 'z': 4}
-{% set deselect_tests = deselect_tests + " --deselect=test_config.py::test_collect_yaml_permission_errors" %}  # [linux]
 # When cgroup v2 CPU quota is set to "max" (unlimited),
 # the function should fall back to using os.cpu_count(),
 # but it's returning 3 instead of the mocked value of 250,
 # suggesting either the cgroup parsing logic is incorrectly interpreting "max" or there's an issue with how the fallback mechanism works.
 # >   assert count == 201
 # E   assert 3 == 201
-{% set deselect_tests = deselect_tests + " --deselect=test_system.py::test_cpu_count_cgroups" %}  # [linux]
-{% set deselect_tests = deselect_tests + " --deselect=test_system.py::test_cpu_count_cgroups_v2" %}  # [linux]
-
 test:
   source_files:
     - conftest.py
@@ -222,7 +229,6 @@ test:
 
 # Note: The build and dependency order for dask-distributed packages are as follows.
 # dask-core -> dask-expr -> distributed -> dask
-
 about:
   home: https://www.dask.org
   license: BSD-3-Clause
@@ -231,7 +237,7 @@ about:
   summary: Parallel PyData with Task Scheduling
   description: |
     Dask is a flexible parallel computing library for analytics.
-  doc_url:  https://docs.dask.org
+  doc_url: https://docs.dask.org
   dev_url: https://github.com/dask/dask
 
 extra:
