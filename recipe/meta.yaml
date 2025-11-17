@@ -17,9 +17,8 @@ build:
 requirements:
   host:
     - python
-    - pip
-    - setuptools >=80
-    - setuptools-scm
+    - dask-core =={{ version }}
+    - distributed =={{ version }}
   run:
     - python
     - dask-core =={{ version }}
