@@ -1,5 +1,5 @@
 {% set name = "dask" %}
-{% set version = "2025.10.0" %}
+{% set version = "2025.11.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: fd3159c319c27cea39b891c0f22d60056a33575fb4906618eab0aeeb5dcd0cbc
+  sha256: 23d59e624b80ee05b7cc8df858682cca58262c4c3b197ccf61da0f6543c8f7c3
 
 build:
   number: 0
@@ -17,11 +17,8 @@ build:
 requirements:
   host:
     - python
-    - pip
-    - wheel
-    - setuptools >=62.6
-    - versioneer 0.29
-    - tomli
+    - dask-core =={{ version }}
+    - distributed =={{ version }}
   run:
     - python
     - dask-core =={{ version }}
@@ -231,7 +228,7 @@ about:
   summary: Parallel PyData with Task Scheduling
   description: |
     Dask is a flexible parallel computing library for analytics.
-  doc_url:  https://docs.dask.org
+  doc_url: https://docs.dask.org
   dev_url: https://github.com/dask/dask
 
 extra:
