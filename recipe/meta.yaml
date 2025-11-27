@@ -1,5 +1,9 @@
 {% set name = "dask" %}
 {% set version = "2025.11.0" %}
+{% set deselect_tests = "" %}
+{% set deselect_tests = 'deselect_tests + " --deselect=test_config.py::test_collect_yaml_permission_errors"' %}  # [linux]
+{% set deselect_tests = 'deselect_tests + " --deselect=test_system.py::test_cpu_count_cgroups"' %}  # [linux]
+{% set deselect_tests = 'deselect_tests + " --deselect=test_system.py::test_cpu_count_cgroups_v2"' %}  # [linux]
 
 package:
   name: {{ name }}
@@ -10,7 +14,7 @@ source:
   sha256: 23d59e624b80ee05b7cc8df858682cca58262c4c3b197ccf61da0f6543c8f7c3
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
   # do not call pip install or this will lead to duplicates with files from dask-core
 
@@ -39,18 +43,13 @@ requirements:
     - jinja2 >=2.10.3
     - numpy >=1.24
 
-{% set deselect_tests = "" %}
 # E   AssertionError: assert {'x': 1, 'y': 3, 'z': 4} == {'y': 3, 'z': 4}
-{% set deselect_tests = deselect_tests + " --deselect=test_config.py::test_collect_yaml_permission_errors" %}  # [linux]
 # When cgroup v2 CPU quota is set to "max" (unlimited),
 # the function should fall back to using os.cpu_count(),
 # but it's returning 3 instead of the mocked value of 250,
 # suggesting either the cgroup parsing logic is incorrectly interpreting "max" or there's an issue with how the fallback mechanism works.
 # >   assert count == 201
 # E   assert 3 == 201
-{% set deselect_tests = deselect_tests + " --deselect=test_system.py::test_cpu_count_cgroups" %}  # [linux]
-{% set deselect_tests = deselect_tests + " --deselect=test_system.py::test_cpu_count_cgroups_v2" %}  # [linux]
-
 test:
   source_files:
     - conftest.py
@@ -219,7 +218,6 @@ test:
 
 # Note: The build and dependency order for dask-distributed packages are as follows.
 # dask-core -> dask-expr -> distributed -> dask
-
 about:
   home: https://www.dask.org
   license: BSD-3-Clause
