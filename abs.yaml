@@ -1,2 +1,3 @@
 channels:
   - https://staging.continuum.io/pbp/fs/dask-core-feedstock/pr49/70abdb6
+  - https://staging.continuum.io/pbp/fs/distributed-feedstock/pr44/44a58af
