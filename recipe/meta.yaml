@@ -10,7 +10,7 @@ source:
   sha256: 23d59e624b80ee05b7cc8df858682cca58262c4c3b197ccf61da0f6543c8f7c3
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
   # do not call pip install or this will lead to duplicates with files from dask-core
 
