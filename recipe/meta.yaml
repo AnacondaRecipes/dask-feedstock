@@ -19,6 +19,7 @@ requirements:
     - python
     - dask-core =={{ version }}
     - distributed =={{ version }}
+    # setuptools and setuptools-scm dependencies are pulled in through dask-core/distributed
   run:
     - python
     - dask-core =={{ version }}
@@ -29,7 +30,7 @@ requirements:
     - packaging >=20.0
     - partd >=1.4.0
     - pyyaml >=5.3.1
-    - toolz >=0.10.0
+    - toolz >=0.12.0
     - importlib-metadata >=4.13.0  # [py<312]
     # complete
     - pyarrow >=14.0.1
